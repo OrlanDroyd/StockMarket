@@ -2,8 +2,10 @@ package com.gmail.orlandroyd.stockmarket.di
 
 import com.gmail.orlandroyd.stockmarket.data.csv.CSVParser
 import com.gmail.orlandroyd.stockmarket.data.csv.CompanyListingsParser
+import com.gmail.orlandroyd.stockmarket.data.csv.IntradayInfoParser
 import com.gmail.orlandroyd.stockmarket.data.repository.StockRepositoryImpl
 import com.gmail.orlandroyd.stockmarket.domain.model.CompanyListing
+import com.gmail.orlandroyd.stockmarket.domain.model.IntradayInfo
 import com.gmail.orlandroyd.stockmarket.domain.repository.StockRepository
 import dagger.Binds
 import dagger.Module
@@ -26,5 +28,11 @@ abstract class RepositoryModule {
     abstract fun bindStockRepository(
         stockRepositoryImpl: StockRepositoryImpl
     ): StockRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindIntradayInfoParser(
+        intradayInfoParser: IntradayInfoParser
+    ): CSVParser<IntradayInfo>
 
 }
